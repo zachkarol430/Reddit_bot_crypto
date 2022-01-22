@@ -12,10 +12,11 @@ reddit = praw.Reddit(
 
 
 subreddit= "CryptoMoonshots"
-for submission in reddit.subreddit(subreddit).hot(limit=5):
-    print(submission.title.lower())
+post_number= 10
+for submission in reddit.subreddit(subreddit).hot(limit=post_number):
+    print("title: " + submission.title.lower())
     try:
-        print(submission.comments[1].body) #ignore automod
+        print(submission.comments[1].body) #ignore automod, just first comment for now. Most comments are troll
     except:
         print("no comments")
 
